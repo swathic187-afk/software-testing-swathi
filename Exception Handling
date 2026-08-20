@@ -1,0 +1,69 @@
+ *Q1. What is Exception? Write a program for exception handling*
+
+*Answer:* 
+An exception is an event that interrupts the normal flow of a program when an error or unexpected situation occurs. Instead of the program continuing normally, an exception is "thrown" so it can be handled.
+
+*Java Example:*
+public class ExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            int a = 10;
+            int b = 0;
+            int result = a / b;  // Ithu la ArithmeticException varum
+            System.out.println("Result: " + result);
+        } 
+        catch (ArithmeticException e) {
+            System.out.println("Error: Cannot divide by zero!");
+        } 
+        finally {
+            System.out.println("This will always execute");
+        }
+    }
+}
+*Output:*
+Error: Cannot divide by zero!
+This will always execute
+*Python Example:*
+try:
+    a = 10
+    b = 0
+    result = a / b  # ZeroDivisionError
+    print("Result:", result)
+except ZeroDivisionError:
+    print("Error: Cannot divide by zero!")
+finally:
+    print("This will always execute")
+---
+
+ *Q2. What is Collections? Write a program to remove duplicate names using Collections*
+
+*Answer:*
+Collections nu solladhu group of objects ah store panna use aagura framework. List, Set, Map lam varum. Duplicate ah remove panna `Set` best.
+
+*Java Example - Using HashSet:*
+import java.util.*;
+
+public class RemoveDuplicates {
+    public static void main(String[] args) {
+        // List with duplicates
+        List<String> names = new ArrayList<>();
+        names.add("Swathi");
+        names.add("Arun");
+        names.add("Swathi");
+        names.add("Kumar");
+        names.add("Arun");
+        
+        System.out.println("Before: " + names);
+        
+        // HashSet ku pota duplicate automatic ah pogidum
+        Set<String> uniqueNames = new HashSet<>(names);
+        
+        System.out.println("After: " + uniqueNames);
+    }
+}
+*Output:*
+Before: [Swathi, Arun, Swathi, Kumar, Arun]
+After: [Kumar, Arun, Swathi]
+*Python Example - Using set():*
+names = ["Swathi", "Arun", "Swathi", "Kumar", "Arun"]
+
