@@ -1,0 +1,76 @@
+Q1.Difference between Abstract Class and Interface with exampleAbstract ClassInterfaceKeywordabstract classinterfaceMethodsAbstract + Normal methods irukalamJava 8 ku munadi full abstract. Ippo default/static method varalamVariablesNormal + final variablesOnly public static final constantsInheritanceextends - oru class mattumimplements - neraya interface implement pannalamAccess Specifierpublic, protected, private use pannalamFull public dhanObjectObject create panna mudiyadhuObject create panna mudiyadhuJava Example:java// Abstract Class
+abstract class Animal {
+    abstract void sound(); // abstract method
+    
+    void sleep() { // normal method
+        System.out.println("Animal is sleeping");
+    }
+}
+
+// Interface
+interface Vehicle {
+    void start(); // by default public abstract
+    void stop();
+    
+    default void horn() { // default method
+        System.out.println("Beep Beep");
+    }
+}
+
+// Implementation
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Car implements Vehicle {
+    public void start() {
+        System.out.println("Car started");
+    }
+    public void stop() {
+        System.out.println("Car stopped");
+    }
+}
+Q2. Explain Overloading and Overriding with exampleMethod OverloadingMethod OverridingMeaningSame class la same name, different parametersParent & Child class la same name, same parametersBindingCompile time PolymorphismRun time PolymorphismPurposeSame work ah different data ku panradhuParent method ah child la change panradhuJava Example:javaclass Calculator {
+    // 1. METHOD OVERLOADING - same name, different parameters
+    int add(int a, int b) {
+        return a + b;
+    }
+    
+    double add(double a, double b) { // parameter type different
+        return a + b;
+    }
+    
+    int add(int a, int b, int c) { // parameter count different
+        return a + b + c;
+    }
+}
+
+// 2. METHOD OVERRIDING - Parent & Child
+class Animal {
+    void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Cat extends Animal {
+    @Override  // annotation
+    void sound() {  // same name, same parameters
+        System.out.println("Meow Meow");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        // Overloading test
+        Calculator c = new Calculator();
+        System.out.println(c.add(2, 3));       // 5
+        System.out.println(c.add(2.5, 3.5));   // 6.0
+        System.out.println(c.add(1, 2, 3));    // 6
+        
+        // Overriding test
+        Animal a = new Cat(); // Upcasting
+        a.sound(); // Output: Meow Meow - Child method run aagum
+    }
+}
