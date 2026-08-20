@@ -1,0 +1,59 @@
+Option 1: Python Codepython# Parent Class
+class Animal:
+    def sound(self):
+        print("Some animal makes a sound")
+    
+    def sleep(self):
+        print("Animal is sleeping")
+    
+    def walk(self):
+        print("Animal is walking")
+
+# Child Class - Animal ah inherit panradhu
+class Cat(Animal):
+    def sound(self):  # Override panrom
+        print("Cat says: Meow Meow")
+
+# Testing
+c1 = Cat()
+c1.sound()  # Cat oda own method
+c1.sleep()  # Parent class la irundhu vandhadhu
+c1.walk()   # Parent class la irundhu vandhadhu
+
+print("---")
+
+a1 = Animal()
+a1.sound()Output:javascriptCat says: Meow Meow
+Animal is sleeping
+Animal is walking
+---
+Some animal makes a sound
+Option 2: Java Codejava// Parent Class
+class Animal {
+    void sound() {
+        System.out.println("Some animal makes a sound");
+    }
+    void sleep() {
+        System.out.println("Animal is sleeping");
+    }
+    void walk() {
+        System.out.println("Animal is walking");
+    }
+}
+
+// Child Class
+class Cat extends Animal {
+    @Override
+    void sound() {  // Method overriding
+        System.out.println("Cat says: Meow Meow");
+    }
+}
+
+public class TestInheritance {
+    public static void main(String[] args) {
+        Cat c = new Cat();
+        c.sound();  // Cat method
+        c.sleep();  // Animal method
+        c.walk();   // Animal method
+    }
+}
