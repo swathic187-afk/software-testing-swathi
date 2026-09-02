@@ -1,0 +1,67 @@
+package com.sla.assignment;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.List;
+
+public class HandleWebTable {
+    public static void main(String[] args) {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://demoqa.com/webtables");
+
+        // Table body la irukura rows ellam edukkrom
+        List<WebElement> rows = driver.findElements(By.xpath("//div[@class='rt-tbody']//div[@class='rt-tr-group']"));
+        
+        System.out.println("Total rows: " + rows.size());
+
+        for (WebElement row : rows) {
+            // Oru row la irukura columns
+            List<WebElement> cols = row.findElements(By.xpath(".//div[@class='rt-td']"));
+            for (WebElement col : cols) {
+                System.out.print(col.getText() + " | ");
+            }
+            System.out.println();
+        }
+        driver.quit();
+    }
+}Output: Cierra, Vega, 39, cierra@example.com... nu full table data console la varum. Atha screenshot eduthu podu.
+Task
+2: Click "Submit" button with reference to "Permanent Address" using Relative Locators
+Idhu Selenium 4 feature da. Permanent Address ku keela irukura Submit button ah below() use panni click panrom.javapackage com.sla.assignment;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import static org.openqa.selenium.support.locators.RelativeLocator.with;
+
+public class RelativeLocatorsTask {
+    public static void main(String[] args) throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://demoqa.com/text-box");
+
+        // Details fill panrom
+        driver.findElement(By.id("userName")).sendKeys("RR");
+        driver.findElement(By.id("userEmail")).sendKeys("rr@gmail.com");
+        driver.findElement(By.id("currentAddress")).sendKeys("Chennai");
+        
+        WebElement permanentAddress = driver.findElement(By.id("permanentAddress"));
+        permanentAddress.sendKeys("Chennai - Permanent Address");
+
+        // Relative Locator Logic - Permanent Address ku BELOW la irukura Submit button
+        WebElement submitBtn = driver.findElement(with(By.id("submit")).below(permanentAddress));
+        
+        // Click pannura munadi scroll pannanum
+        submitBtn.click();
+
+        System.out.println("Submit button clicked successfully using Relative Locator - below()");
+        
+        Thread.sleep(2000);
+        driver.quit();
+    }
+}
+
