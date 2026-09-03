@@ -1,0 +1,63 @@
+mport org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class PetStoreMiniProject {
+    public static void main(String[] args) throws InterruptedException {
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://petstore.octoperf.com/actions/Catalog.action");
+
+        System.out.println("Opened JPetStore");
+
+        // 1. Select Product other than Birds -> DOGS select panrom
+        driver.findElement(By.xpath("//a[contains(@href,'categoryId=DOGS')]/img | //a[text()='DOGS']")).click();
+        // Alternate direct: driver.findElement(By.linkText("DOGS")).click();
+        Thread.sleep(1000);
+
+        // 2. Select a Dog Product - Bulldog (K9-BD-01)
+        driver.findElement(By.linkText("K9-BD-01")).click();
+        Thread.sleep(1000);
+
+        // 3. Select Item - Male Adult Bulldog (EST-6)
+        driver.findElement(By.linkText("EST-6")).click();
+        Thread.sleep(1000);
+
+        // 4. Add to Cart
+        driver.findElement(By.linkText("Add to Cart")).click();
+        System.out.println("Added Bulldog to Cart");
+        Thread.sleep(1000);
+
+        // 5. Proceed to Checkout
+        driver.findElement(By.linkText("Proceed to Checkout")).click();
+        Thread.sleep(1000);
+
+        // 6. Login Page varum, if account illa na Sign Up pannanum
+        // Existing demo account use pannalam: username: j2ee , password: j2ee
+        // Illana Sign Up link click panni new account create pannalam
+        
+        // Login with existing account
+        try {
+            driver.findElement(By.name("username")).sendKeys("j2ee");
+            driver.findElement(By.name("password")).clear();
+            driver.findElement(By.name("password")).sendKeys("j2ee");
+            driver.findElement(By.name("signon")).click();
+            System.out.println("Logged in");
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            System.out.println("Already logged in or login failed, continuing");
+        }
+
+        // 7. Confirm checkout - Shipping address confirm
+        driver.findElement(By.name("newOrder")).click();
+        Thread.sleep(1000);
+
+        // 8. Confirm Order
+        driver.findElement(By.linkText("Confirm")).click();
+        System.out.println("Order Confirmed - Mini Project Flow Completed Successfully!");
+        
+        Thread.sleep(3000);
+        driver.quit();
+    }
+}
