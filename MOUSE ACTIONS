@@ -1,0 +1,41 @@
+javaimport org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class MouseEventAssignment {
+    public static void main(String[] args) throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://vinothqaacademy.com/mouse-event/");
+
+        Actions act = new Actions(driver);
+
+        // 1. DOUBLE CLICK - button id = dblclick
+        WebElement doubleClick = driver.findElement(By.id("dblclick"));
+        act.doubleClick(doubleClick).perform();
+        System.out.println("Double Click Done");
+        Thread.sleep(1000);
+
+        // 2. RIGHT CLICK - button id = rightclick
+        WebElement rightClick = driver.findElement(By.id("rightclick"));
+        act.contextClick(rightClick).perform();
+        System.out.println("Right Click Done");
+        Thread.sleep(1000);
+
+        // 3. DRAG AND DROP
+        WebElement source = driver.findElement(By.id("draggable"));
+        WebElement target = driver.findElement(By.id("droppable"));
+        
+        act.dragAndDrop(source, target).perform();
+        System.out.println("Drag and Drop Done");
+        
+        Thread.sleep(2000);
+        driver.quit();
+    }
+}
+Output 
+Double Click Done
+Right Click Done
+Drag and Drop Done
