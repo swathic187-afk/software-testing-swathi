@@ -1,0 +1,59 @@
+1.public class SkipMultiplesOf3 {
+    public static void main(String[] args) {
+
+        for (int i = 1; i <= 50; i++) {
+            if (i % 3 == 0) {
+                continue;
+            }
+            System.out.println(i);
+        }
+    }
+}
+
+Output:
+1,2,3,4,5,7,8,10,11...... 49,5
+
+2.<div>
+ <div>
+          <input type="button" class="btn"
+ id="ok"/>
+          </div>
+ </div> 
+Possible css Selectors
+ #ok 
+.btn
+
+ouput:
+#ok
+
+
+
+3. import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class LoginTest {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://www.ictc.com");
+
+        driver.manage().window().maximize();
+
+        driver.findElement(By.id("username")).sendKeys("testuser");
+
+        driver.findElement(By.id("password")).sendKeys("password123");
+
+        driver.findElement(By.id("login")).click();
+
+        driver.quit();
+    }
+}
+
+
