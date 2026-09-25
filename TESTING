@@ -1,0 +1,40 @@
+import org.testng.annotations.Test;
+
+public class ATMTest {
+
+    @Test(priority = 1)
+    public void testInsertCard() {
+        System.out.println("1. Insert Card");
+    }
+
+    @Test(priority = 2,
+dependsOnMethods = "testInsertCard")
+    public void testReadCard() {
+        System.out.println("2. Read Card");
+    }
+
+    @Test(priority = 3, 
+dependsOnMethods = "testReadCard")
+    public void testCheckBalance() {
+        System.out.println("3. Check Balance");
+    }
+
+    @Test(priority = 4, 
+dependsOnMethods = "testCheckBalance")
+    public void testWithdraw() {
+        System.out.println("4. Withdraw Money");
+    }
+
+    @Test(priority = 5,
+dependsOnMethods = "testWithdraw")
+    public void testCardOut() {
+        System.out.println("5. Card Out");
+    }
+}
+
+OUTPUT:
+1. Insert Card
+2. Read Card
+3. Check Balance
+4. Withdraw Money
+5. Card Out
